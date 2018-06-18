@@ -1,0 +1,73 @@
+Q 3)
+	The 'Int Reg' screen shows the mips registers and their values.
+	The 'Text' screen shows the various MIPS instuctions.
+	The 'Data' gives memory addresses and their values, 'Fp Reg' don't know. 
+
+Q 4)
+	the program begins at address [00400014].
+	
+	li gets translated into 'ori'.
+	
+	The machine code of my instructions are :
+		0x34080001
+		0x34090002
+		0x01095020  (all are hexadecimal)
+		
+	The op-codes for :
+	 ori is 001101
+	 add is 000000
+	 
+Q 7)
+	see  file : 'add1.s' to run 
+	code :
+	.text
+	main:
+	# Your code starts from the line below
+	lui $t0 , 4096 		#	10000001   load left
+	ori $t0 , $t0 , 1 	#load right
+	lui $t1 , 8192 		#  	20000002   load left
+	ori $t1 , $t1 , 2 	#	load right
+	addu $t3 , $t0 , $t1	#add 
+	li $v0,10
+	syscall
+	
+Q 8)
+	see file : 'array_sum.s' to run
+	code :
+	.data
+	N: .word 5
+	X: .word 2,4,6,8,10
+	SUM: .word 0
+	.text
+	main:
+	la $s0 , X  		# load adds of X0
+	la $s1 , SUM 		#
+	lw $t0 ,  ($s0)		#  X index
+
+	la $s3 , N	      #  	N
+	lw $t1 , ($s3)    # 	N
+	addi $t2 , $0 , 0 #   counter
+
+
+	lw $s2 , ($s1) 		#Sum
+	add $s2 , $t0 ,$s2 	
+
+
+	loop:
+	
+		addi $s0 , $s0 , 4
+		lw $t0 ,  ($s0)
+		addi $t2 , $t2 , 1
+		add $s2 , $t0 ,$s2
+		bne $t2 , $t1 , loop 
+
+	sw $s2 , ($s1) 		
+
+	add $v0 , $0 , $s2  
+
+	li $v0,10
+	syscall
+
+
+
+	

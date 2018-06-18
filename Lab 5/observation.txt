@@ -1,0 +1,8 @@
+Number of cycles for single cycle datapath: 
+153
+Number of cycles for multi cycle datapath: 
+647
+Ratio of speeds of single cycle to multi cycle considering a clock speed of 5 times for multi cycle: 
+1.1823802163
+
+Clearly in this case Single cycle datapath is slower in the case of gcd_noopt.s

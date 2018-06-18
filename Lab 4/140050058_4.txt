@@ -1,0 +1,32 @@
+
+Q2 A)
+
+What is crossc-omplier ?
+A compiler which can convert instructions into machine code or low-level code for a computer other than that on which it is run.
+
+What is host platform?
+The host platform is where the output artifacts from the compiler will be executed
+
+What is the target platform? 
+he target platform is used when cross compiling cross compilers, it represents what type of object code the package itself will produce.
+
+
+Q2 B)
+
+The host platfrom is c and target is assembly mips.
+
+
+Q4)
+
+
+instarucion counts:
+
+fibonacci_basic.s  - 4018
+gcd_basic.s - 76
+
+gcd_noopt.s - 154
+fibonacci_noopt. - 3234
+
+Q 5)
+
+The usage of stack in  -O1 optimzatioion is  high to optimize the libraries.

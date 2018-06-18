@@ -1,0 +1,65 @@
+1)
+	c)
+	
+	Arithmetic Overflow Exception(Name - OVF) (Code - 12):
+		Occurs when an instruction that causes arithmetic overflow in the registers is executed
+		Example code:
+			.text
+			main:
+				lui $s0, 32767
+				ori $s1, $s0, 65535
+				#Adding 1 to $s1 and storing in $s2 should lead to 
+				#an arithmetic overflow exception
+				addi $s2, $s1, 1
+
+			exit:
+				li $v0, 10				#exit call
+				syscall 
+	
+	Load from an illegal address(Name - ADDRL) (Code - 4):
+		Occurs when we attempt to use load word with a non word aligned address
+		Example Code:
+			.data
+			#create an array
+			A:
+				.align 2 #Align the next datum on a 2^2 byte boundary.
+				.space 40 #Create array with 20 integers
+
+			.text
+			main:
+				la $s0, A 				#Load address of array
+				lw $s1, 1($s0) 			#Access a non word aligned address
+
+			exit:
+				li $v0, 10				#exit call
+				syscall 
+
+	Store to an illegal address (Name - ADDRS) (Code - 5):
+		Occurs when we attempt to use store word to a non word aligned address
+		Example Code:
+			.data
+			A:
+				.align 2 #Align the next datum on a 2^2 byte boundary.
+				.space 40 #Create array with 20 integers
+
+			.text
+			main:
+				la $s0, A 				#Load address of array
+				li $s1, 1 				#Put some integer in s1
+				sw $s1, 1($s0) 			#Store in a non word aligned address
+
+			exit:
+				li $v0, 10				#exit call
+				syscall 
+	Break point Instruction (Name - BKPT) (Code - 9):
+		Occured when division by 0 is attempted
+		Example code:
+			.text
+			main:
+				li $s0, 0 				#Set s0 to 0
+				li $s1, 1 				#Set s1 to 1
+				div $s2, $s1, $s0 		#Divide by 0
+
+			exit:
+				li $v0, 10				#exit call
+				syscall 

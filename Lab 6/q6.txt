@@ -1,0 +1,5 @@
+1)
+	bnez requires its input in ID stage.
+	From the clock cycle diagram, RAW hazard can be seen to occur with seq instruction (Can be seen after ID of seq).
+	The required input is available to bnez after intEx of seq as seen by green arrow pointing to ID
+
